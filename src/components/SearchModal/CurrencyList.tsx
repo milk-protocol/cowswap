@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, JSBI, Token } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, JSBI, Token } from '../../sdk'
 import React, { CSSProperties, memo, useContext, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
@@ -43,6 +43,10 @@ export default function CurrencyList({
   const addToken = useAddUserToken()
   const removeToken = useRemoveUserAddedToken()
   const ETHBalance = useETHBalances([account])[account]
+
+  console.log("-------", currencies)
+  console.log("-------", account)
+  console.log("-------", chainId)
 
   const CurrencyRow = useMemo(() => {
     return memo(function CurrencyRow({ index, style }: { index: number; style: CSSProperties }) {

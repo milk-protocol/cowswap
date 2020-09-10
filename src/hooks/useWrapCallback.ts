@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from '@uniswap/sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '../sdk' 
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
@@ -33,7 +33,7 @@ export default function useWrapCallback(
 
   return useMemo(() => {
     if (!wethContract || !chainId || !inputCurrency || !outputCurrency) return NOT_APPLICABLE
-
+    console.log(inputAmount)
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
 
     if (inputCurrency === ETHER && currencyEquals(WETH[chainId], outputCurrency)) {

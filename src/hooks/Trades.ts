@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, Token, Trade } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, Pair, Token, Trade } from '../sdk'
 import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 
@@ -12,6 +12,9 @@ function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): Pair[] {
   const { chainId } = useActiveWeb3React()
 
   const bases: Token[] = chainId ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []
+  console.log(chainId)
+  console.log(BASES_TO_CHECK_TRADES_AGAINST)
+  console.log(BASES_TO_CHECK_TRADES_AGAINST[chainId])
 
   const [tokenA, tokenB] = chainId
     ? [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)]
